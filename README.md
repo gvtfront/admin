@@ -1,4 +1,4 @@
-gvt-end
+admin
 =======
 
 The End Of GVT Travel
@@ -7,7 +7,7 @@ The End Of GVT Travel
 ----
 
 ```shell
-vue init PassionZale/gvt-end ${YOUR_PROJECT_NAME}
+vue init gvtfront/admin ${YOUR_PROJECT_NAME}
 
 cd ${YOUR_PROJECT_NAME}
 
