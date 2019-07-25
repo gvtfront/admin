@@ -11,7 +11,7 @@ const WEBPACK_OPEN_PAGE = "umsf";
 const WEBPACK_DEV_SERVER_HOST = "localhost";
 
 // webpack-dev-server port
-const WEBPACK_DEV_SERVER_PORT = 9093;
+const WEBPACK_DEV_SERVER_PORT = 4080;
 
 // webpack-dev-server proxy target
 const WEBPACK_DEV_SERVER_PROXY_TARGET = "http://192.168.1.134:18001";
