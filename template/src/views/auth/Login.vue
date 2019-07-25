@@ -19,7 +19,7 @@ import md5 from "js-md5";
 import { login, supportType, getOemByDomain } from "@/api/auth";
 import Auth from "@/utils/auth";
 import Lang from "@/utils/lang";
-import { setI18nLanguage } from "@/setup/i18n-setup";
+import { setI18nLanguage } from "@/utils/i18n";
 import { redirect } from "@/utils/helper";
 import {
   BACKEND_DOMAIN,

@@ -1,8 +1,8 @@
 {
-  "name": "gvt-admin",
-  "description": "admin @GVT",
+  "name": "gvt-end",
+  "description": "End @GVT",
   "version": "1.0.0",
-  "author": "davidZhou <https://www.itzdw.com>",
+  "author": "Lei Zhang <https://www.lovchun.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

@@ -1,4 +1,3 @@
-
 // 用户登录 API URL, excute domain!
 const USER_LOGIN_API_URL = "/auth/login";
 
@@ -12,7 +11,7 @@ const WEBPACK_OPEN_PAGE = "umsf";
 const WEBPACK_DEV_SERVER_HOST = "localhost";
 
 // webpack-dev-server port
-const WEBPACK_DEV_SERVER_PORT = 9090;
+const WEBPACK_DEV_SERVER_PORT = 9093;
 
 // webpack-dev-server proxy target
 const WEBPACK_DEV_SERVER_PROXY_TARGET = "http://192.168.1.134:18001";
@@ -27,15 +26,15 @@ switch (process.env.NODE_ENV) {
   case "fat":
     backend = "http://192.168.1.116/ums";
     break;
-  // 开发环境
+    // 开发环境
   case "dev":
     backend = "http://192.168.1.35/ums";
     break;
-  // 生产环境
+    // 生产环境
   case "production":
     backend = "http://ums.astraea.com.au/ums";
     break;
-  // 本地开发
+    // 本地开发
   default:
     backend = "/api";
 }
