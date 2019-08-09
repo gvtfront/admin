@@ -7,13 +7,15 @@ The End Of GVT Travel
 ----
 
 ```shell
-vue init PassionZale/gvt-end ${YOUR_PROJECT_NAME}
+vue init gvtfront/admin ${YOUR_PROJECT_NAME}
 
 cd ${YOUR_PROJECT_NAME}
 
 npm install
 
 vim ./src/utils/env.js
+进入编辑器后，我们先按"i"，即切换到"插入"状态。
+按键盘左上角的"ESC",输入":wq"，保存退出。
 
 # 依据下方配置项配置 env.js 后
 
