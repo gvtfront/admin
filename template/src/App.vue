@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import "iview/dist/styles/iview.css";
-import "./styles/iview-reset.less";
+import 'iview/dist/styles/iview.css'
+import './styles/iview-reset.less'
 export default {
-  name: "App"
-};
+  name: 'App'
+}
 </script>

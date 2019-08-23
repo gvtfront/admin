@@ -17,10 +17,12 @@ const MixinLayoutList = {
     this.$nextTick(() => {
       this.updateTableHeight()
 
-      window.addEventListener("resize", this.updateTableHeight, { "passive": true })
+      window.addEventListener('resize', this.updateTableHeight, {
+        passive: true
+      })
 
-      this.$once("hook:beforeDestroy", () => {
-        window.removeEventListener("resize", this.updateTableHeight)
+      this.$once('hook:beforeDestroy', () => {
+        window.removeEventListener('resize', this.updateTableHeight)
       })
     })
   },
@@ -29,19 +31,25 @@ const MixinLayoutList = {
     updateTableHeight() {
       const minHeight = 400
 
-      const clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+      const clientHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      )
 
-      const header = this.getElHeight(".gvt-header")
+      const header = this.getElHeight('.gvt-header')
 
-      const formWrapper = this.getElHeight(".form-wrapper")
-      const toolWrapper = this.getElHeight(".tool-wrapper")
+      const formWrapper = this.getElHeight('.form-wrapper')
+      const toolWrapper = this.getElHeight('.tool-wrapper')
 
-      const pageWrapper = this.getElHeight(".page-wrapper")
-
+      const pageWrapper = this.getElHeight('.page-wrapper')
 
       // .gvt-content padding top & bottom => 10px * 2
       // .gvt-content .main padding top & bottom => 20px * 2
-      const tableHeight = clientHeight - (header + formWrapper + toolWrapper + pageWrapper) - 10 * 2 - 20 * 2
+      const tableHeight =
+        clientHeight -
+        (header + formWrapper + toolWrapper + pageWrapper) -
+        10 * 2 -
+        20 * 2
 
       this.doNotUse = tableHeight > minHeight ? tableHeight : minHeight
     },
@@ -57,8 +65,7 @@ const MixinLayoutList = {
       }
       return height
     }
-  },
-
+  }
 }
 
 export default MixinLayoutList

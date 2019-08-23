@@ -1,30 +1,30 @@
 <template>
   <div>
-    <Select
-      v-show="!disPageSize" 
-      v-model="pagination.pageSize" 
-      @on-change="handlePageSizeChange" 
-      class="gvt-page-size">
-      <Option v-for="item in pagination.pageSizeOpts" :value="item" :key="item">
+    <Select v-show="!disPageSize"
+            v-model="pagination.pageSize"
+            @on-change="handlePageSizeChange"
+            class="gvt-page-size">
+      <Option v-for="item in pagination.pageSizeOpts"
+              :value="item"
+              :key="item">
         {{ $t('common.pagination', { pageSize: item }) }}
       </Option>
     </Select>
-    <Page
-      class="gvt-page"
-      :current.sync="pagination.pageNum"
-      :total="pagination.total"
-      :page-size="pagination.pageSize"
-      @on-change="handlePageChange"
-      show-elevator
-      show-total>
+    <Page class="gvt-page"
+          :current.sync="pagination.pageNum"
+          :total="pagination.total"
+          :page-size="pagination.pageSize"
+          @on-change="handlePageChange"
+          show-elevator
+          show-total>
     </Page>
   </div>
 </template>
 
 <script>
-import { PAGE_PARAMS } from "@/utils/constants";
+import { PAGE_PARAMS } from '@/utils/constants'
 export default {
-  name: "Pagination",
+  name: 'Pagination',
 
   props: {
     disPageSize: Boolean,
@@ -32,21 +32,21 @@ export default {
     pagination: {
       type: Object,
       default: () => {
-        return Object.assign({}, PAGE_PARAMS);
+        return Object.assign({}, PAGE_PARAMS)
       }
     }
   },
 
   methods: {
     handlePageSizeChange() {
-      this.$emit("on-page-size-change",this.pagination);
+      this.$emit('on-page-size-change', this.pagination)
     },
 
     handlePageChange() {
-      this.$emit("on-page-change",this.pagination);
+      this.$emit('on-page-change', this.pagination)
     }
   }
-};
+}
 </script>
 
 <style lang="less">

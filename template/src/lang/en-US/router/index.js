@@ -1,5 +1,5 @@
 const lang = {
-  console: "Console"
+  console: 'Console'
 }
 
 export default { router: lang }

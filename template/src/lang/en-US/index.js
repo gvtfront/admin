@@ -1,20 +1,20 @@
-import iviewEN from "iview/dist/locale/en-US"
-import routerEN from "./router"
+import iviewEN from 'iview/dist/locale/en-US'
+import routerEN from './router'
 
 const lang = {
   ...iviewEN,
-  
+
   ...routerEN,
 
   common: {
-    pagination:           "{pageSize} /page",
+    pagination: '{pageSize} /page',
 
-    message: { accOrPassword: "Wrong account or password" },
+    message: { accOrPassword: 'Wrong account or password' },
 
     form: {
       btn: {
-        search:           "Search",
-        reset:            "Rest",
+        search: 'Search',
+        reset: 'Rest'
       },
 
       label: {}
@@ -25,11 +25,11 @@ const lang = {
 
       tbody: {
         operate: {
-          edit:            "Edit",
-          remove:          "Remove",
-        },
-      },
-    },
+          edit: 'Edit',
+          remove: 'Remove'
+        }
+      }
+    }
   }
 }
 

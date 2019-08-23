@@ -4,7 +4,7 @@ const MixinLayoutTree = {
       doNotUse: {
         treeHeight: 0,
         tableHeight: 0
-      },
+      }
     }
   },
 
@@ -13,7 +13,7 @@ const MixinLayoutTree = {
       return {
         treeStyle: {
           maxHeight: `${this.doNotUse.treeHeight}px`,
-          overflowY: "auto"
+          overflowY: 'auto'
         },
         tableHeight: this.doNotUse.tableHeight
       }
@@ -24,10 +24,10 @@ const MixinLayoutTree = {
     this.$nextTick(() => {
       this.updateElsHeight()
 
-      window.addEventListener("resize", this.updateElsHeight, { "passive": true })
+      window.addEventListener('resize', this.updateElsHeight, { passive: true })
 
-      this.$once("hook:beforeDestroy", () => {
-        window.removeEventListener("resize", this.updateElsHeight)
+      this.$once('hook:beforeDestroy', () => {
+        window.removeEventListener('resize', this.updateElsHeight)
       })
     })
   },
@@ -36,25 +36,34 @@ const MixinLayoutTree = {
     updateElsHeight() {
       const minHeight = 400
 
-      const clientHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+      const clientHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      )
 
-      const header = this.getElHeight(".gvt-header")
+      const header = this.getElHeight('.gvt-header')
 
-      const treeToolWrapper = this.getElHeight(".tree-tool-wrapper")
+      const treeToolWrapper = this.getElHeight('.tree-tool-wrapper')
       // .gvt-content padding top & bottom => 10px * 2
       // .gvt-content .main padding top & bottom => 20px * 2
-      const treeHeight = clientHeight - header - treeToolWrapper - 10 * 2 - 20 * 2
+      const treeHeight =
+        clientHeight - header - treeToolWrapper - 10 * 2 - 20 * 2
       // 计算 .left-container 中的 tree 高度
       this.doNotUse.treeHeight = treeHeight > minHeight ? treeHeight : minHeight
 
-      const formWrapper = this.getElHeight(".form-wrapper")
-      const toolWrapper = this.getElHeight(".tool-wrapper")
-      const pageWrapper = this.getElHeight(".page-wrapper")
+      const formWrapper = this.getElHeight('.form-wrapper')
+      const toolWrapper = this.getElHeight('.tool-wrapper')
+      const pageWrapper = this.getElHeight('.page-wrapper')
       // .gvt-content padding top & bottom => 10px * 2
       // .gvt-content .main padding top & bottom => 20px * 2
-      const tableHeight = clientHeight - (header + formWrapper + toolWrapper + pageWrapper) - 10 * 2 - 20 * 2
+      const tableHeight =
+        clientHeight -
+        (header + formWrapper + toolWrapper + pageWrapper) -
+        10 * 2 -
+        20 * 2
       // 计算 .right-container 中的 table 高度
-      this.doNotUse.tableHeight = tableHeight > minHeight ? tableHeight : minHeight;
+      this.doNotUse.tableHeight =
+        tableHeight > minHeight ? tableHeight : minHeight
     },
 
     getElHeight(el) {
@@ -68,8 +77,7 @@ const MixinLayoutTree = {
       }
       return height
     }
-  },
-
+  }
 }
 
 export default MixinLayoutTree

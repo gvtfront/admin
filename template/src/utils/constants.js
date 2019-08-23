@@ -1,5 +1,5 @@
 // JWT 过期状态码集合
-export const JWT_EXPIRES_CODE = ["110002", "110003", "110004", "110103"];
+export const JWT_EXPIRES_CODE = ['110002', '110003', '110004', '110103']
 
 // 分页公共参数
 export const PAGE_PARAMS = {
