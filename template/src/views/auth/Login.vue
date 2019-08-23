@@ -5,6 +5,7 @@
     :login-back-url="oemConfigs.loginBackUrl"
     :login-url="oemConfigs.loginUrl"
     :domain-icp-no="oemConfigs.domainIcpNo"
+    :callback="true"
   >
     <div class="tp-login-item" v-for="item in supports" @click="tpLoginClick(item.loginUrl)">
       <img :src="'static/' + item.code + '.png'" />
