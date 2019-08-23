@@ -1,13 +1,14 @@
 <template>
-  <hero-login
-    @login="submit"
-    :locale.sync="lang"
-    :login-back-url="oemConfigs.loginBackUrl"
-    :login-url="oemConfigs.loginUrl"
-    :domain-icp-no="oemConfigs.domainIcpNo"
-    :callback="true"
-  >
-    <div class="tp-login-item" v-for="item in supports" @click="tpLoginClick(item.loginUrl)">
+  <hero-login @login="submit"
+              :locale.sync="lang"
+              :login-back-url="oemConfigs.loginBackUrl"
+              :login-url="oemConfigs.loginUrl"
+              :domain-icp-no="oemConfigs.domainIcpNo"
+              :callback="true">
+    <div class="tp-login-item"
+         v-for="(item,index) in supports"
+         :key="index"
+         @click="tpLoginClick(item.loginUrl)">
       <img :src="'static/' + item.code + '.png'" />
       <span v-show="item.code === 'WEIXIN'">{{$t('loginForm.tpLoginText.weixin')}}</span>
       <span v-show="item.code === 'ALIPAY'">{{$t('loginForm.tpLoginText.alipay')}}</span>
@@ -16,78 +17,78 @@
 </template>
 
 <script>
-import md5 from "js-md5";
-import { login, supportType, getOemByDomain } from "@/api/auth";
-import Auth from "@/utils/auth";
-import Lang from "@/utils/lang";
-import { setI18nLanguage } from "@/utils/i18n";
-import { redirect } from "@/utils/helper";
+import md5 from 'js-md5'
+import { login, supportType, getOemByDomain } from '@/api/auth'
+import Auth from '@/utils/auth'
+import Lang from '@/utils/lang'
+import { setI18nLanguage } from '@/utils/i18n'
+import { redirect } from '@/utils/helper'
 import {
   BACKEND_DOMAIN,
   WEBPACK_DEV_SERVER_PROXY_TARGET,
   ENV
-} from "@/utils/env";
+} from '@/utils/env'
 
 export default {
-  name: "auth-login",
+  name: 'auth-login',
 
   data() {
     return {
       lang: Lang.getLang(),
       supports: [],
       oemConfigs: {}
-    };
+    }
   },
 
   watch: {
     lang(lang) {
-      setI18nLanguage(lang);
+      setI18nLanguage(lang)
     }
   },
 
   computed: {
     backendDomain() {
-      return BACKEND_DOMAIN === "/api"
+      return BACKEND_DOMAIN === '/api'
         ? WEBPACK_DEV_SERVER_PROXY_TARGET
-        : BACKEND_DOMAIN;
+        : BACKEND_DOMAIN
     }
   },
 
   created() {
     supportType().then(response => {
-      this.supports = response.data;
-    });
+      this.supports = response.data
+    })
     getOemByDomain(window.location.hostname).then(response => {
-      this.oemConfigs = response.data || {};
-    });
+      this.oemConfigs = response.data || {}
+    })
   },
 
   mounted() {
-    document.title = `Astraea - ${this.$t("loginForm.loginBtn")}`;
+    document.title = `Astraea - ${this.$t('loginForm.loginBtn')}`
   },
 
   methods: {
     tpLoginClick(redirectUrl) {
-      redirect(this.backendDomain + redirectUrl);
+      redirect(this.backendDomain + redirectUrl)
     },
 
     submit(user) {
       const params = Object.assign({}, user, {
         password: md5(user.password)
-      });
+      })
       login(params)
         .then(response => {
-          const jwt = response.data.token;
-          Auth.setToken(jwt);
-          Lang.setLang(this.lang);
-          this.$router.push("/");
+          const jwt = response.data.token
+          Auth.setToken(jwt)
+          Lang.setLang(this.lang)
+          this.$router.push('/')
         })
         .catch(error => {
-          this.$Message.error(this.$t("common.message.accOrPassword"));
-        });
+          this.$Message.error(this.$t('common.message.accOrPassword'))
+        })
     }
   }
-};
+}
 </script>
 
 <style lang="less">
