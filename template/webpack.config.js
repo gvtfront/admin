@@ -73,7 +73,7 @@ module.exports = {
       hash: true,
       title: 'Astraea',
       filename: 'index.html',
-      template: 'index.ejs',
+      template: 'index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true
